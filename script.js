@@ -2,7 +2,7 @@
 let secretNumber = Math.trunc(Math.random() * 50) + 1;
 let score = 10;
 let highscore = 0;
-document.querySelector(".check").addEventListener("click", function () {
+function game() {
   const guess = Number(document.querySelector(".guess").value);
   // when no number is given
   if (!guess) {
@@ -32,7 +32,8 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".score").textContent = 0;
     }
   }
-});
+}
+document.querySelector(".check").addEventListener("click", game);
 //Resets the whole game except highscore
 document.querySelector(".again").addEventListener("click", function () {
   score = 10;
@@ -43,4 +44,9 @@ document.querySelector(".again").addEventListener("click", function () {
   document.querySelector(".number").textContent = "?";
   document.querySelector(".guess").value = "";
   document.querySelector(".number").style.width = "15rem";
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    game();
+  }
 });
